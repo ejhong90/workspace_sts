@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="버튼" id="btn"> <br>
+    <input type="text" id="typing">
+
+
+    <script>
+        // 이벤트 처리
+        // onclick과 비슷하지만 상황에 따라 쓸 수 있는 경우가 다름 알아서 그 감을 찾아라
+        const btn = document.querySelector('#btn');
+
+        // 2개의 매개변수가 들어감
+        // 1) 어떤 이벤트인가
+        // 2) 이벤트 발생마다 수행할 액팅 (함수 정의 후 호출)
+         
+        // btn.addEventListener('click', test);
+        // function test(){
+        //     alert(111);
+        // }
+
+        // 위의 두개를 하나로 합친다!
+        btn.addEventListener('click', function(){
+            alert(111);
+        });
+        
+
+        // input 태그에 키보드로 값을 입력할 때마다
+        // 입력한 값을 console에 출력 시키는 이벤트 코드 작성
+
+        const keyBoard = document.querySelector('#typing');
+        keyBoard.addEventListener('keyup', function(){
+            console.log(keyBoard.value)
+        });
+        // 위의 keyup은 html에서 onkeyup으로 있음
+        
+        
+    </script>
+</body>
+</html>

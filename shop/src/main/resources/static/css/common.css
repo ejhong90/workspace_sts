@@ -1,0 +1,24 @@
+/* 모든 html에서 공통적으로 적용되는 css */
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 16px;
+}
+
+/* 쇼핑몰 제목 크기 변경 */
+.main-title{
+    font-size: 80px;
+}
+
+.pointer-span:hover{
+    cursor: pointer;
+}
+
+.header-div{
+    margin-bottom: 3rem;
+}

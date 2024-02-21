@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        width: 600px;
+        margin: 0 auto;       
+    }
+    table{
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <form action="/member/confirmJoin" method="post">
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>
+                        <input type="text" name="memberId">
+                    </td>
+                </tr>
+                <tr>
+                    <td>비밀번호</td>
+                    <td>
+                        <input type="password" name="memberPw">
+                    </td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <input type="text" name="memberName">
+                    </td>
+                </tr>
+                <tr>
+                    <td>성별</td>
+                    <td>
+                        <input type="radio" name="gender" value="남"> 남
+                        <input type="radio" name="gender" value="여"> 여
+                    </td>
+                </tr>
+                <tr>
+                    <td>e-mail</td>
+                    <td>
+                        <input type="text" name="memberEmail">
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <input type="submit" value="가입">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

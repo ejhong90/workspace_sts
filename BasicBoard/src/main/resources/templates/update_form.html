@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+    <style>
+        .container{
+            width: 600px;
+            margin: 0 auto;
+        }
+        table{
+            width: 100%;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        tr, td{
+            border: 1px solid black;
+        }
+        textarea{
+            resize: none;
+        }
+        .btn-div{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="updateBoard" method="post">
+            <table>
+                <tr>
+                    <td>글번호</td>
+                    <td><input type="text" name="boardNum" th:value="${boardDetail.boardNum}" readonly></td>
+                </tr>
+                <!-- 수정하지 않는 데이터의 name을 작성할 필요 없음 -->
+                <tr>
+                    <td>제목</td>
+                    <td><input type="text" name="boardTitle" th:value="${boardDetail.boardTitle}" ></td>
+                </tr>
+                <tr>
+                    <td>작성자</td>
+                    <td><input type="text" name="writer" th:value="${boardDetail.writer}" readonly></td>
+                </tr>
+                <tr>
+                    <td>작성일</td>
+                    <td><input type="text" name="createDate" th:value="${boardDetail.createDate}" readonly></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea name="boardContent" cols="30" rows="10">[[${boardDetail.boardContent}]]</textarea></td>
+                </tr>
+            </table>
+            <div class="btn-div">
+                <input type="submit" value="수정">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

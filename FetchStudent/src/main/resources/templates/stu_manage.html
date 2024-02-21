@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+    <link rel="stylesheet" href="/stu_manage.css">
+</head>
+<body>
+    <table class="container">
+        <colgroup>
+            <col width="50%">
+            <col width="50%">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>
+                    <div>
+                        <div>
+                            <!-- <select onchange="goSelect()" id="class-selector"> -->
+                            <select onchange="fetchSelect()" id="class-selector">
+                                <option value="0" th:selected="${stuVO.classCode == 0}">전체</option>
+                                <th:block th:each="classInfo :${clsList}">
+                                    <option th:value="${classInfo.classCode}" th:selected="${stuVO.classCode == classInfo.classCode}">[[${classInfo.className}]]</option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="table">
+                            <div class="rowTitle">
+                                <div class="cell">No</div>
+                                <div class="cell">반이름</div>    
+                                <div class="cell">학번</div>    
+                                <div class="cell">이름</div>    
+                            </div>
+                            <th:block th:each="stu, state : ${stuList}">
+                                <div class="rowBody">                                
+                                    <div class="cell"> [[${#lists.size(stuList) - state.index}]]</div>
+                                    <div class="cell">[[${stu.className}]]</div>
+                                    <div class="cell">[[${stu.stuNum}]]</div>
+                                    <div class="cell">
+                                        <span id="name-span" th:onclick="goScore([[${stu.stuNum}]])">[[${stu.stuName}]]</span>
+                                    </div>                                                               
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="stu-detail-div">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="/stu_manage.js"></script>
+</body>
+</html>

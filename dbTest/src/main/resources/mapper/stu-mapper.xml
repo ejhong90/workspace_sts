@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<!-- 모든 쿼리에 세미콜론 제외 -->
+<!-- SPRING에서는 자동커밋됨 (따로 설정하지 않으면) -->
+<mapper namespace="stuMapper">
+    <!-- STUDENT 테이블과 StudentVO를 연결하는 resultMap  -->
+    <resultMap id="stu" type="com.green.dbTest.vo.StudentVO">
+        <!--
+            column : 연결할 테이블의 컬럼명
+            property : 테이블 컬럼과 연결할 클래스에 정의한 변수
+       -->
+        <result column="STU_NO"     property="stuNo" />
+        <result column="STU_NAME"   property="stuName" />
+        <result column="SCORE"      property="score" />
+        <result column="ADDR"       property="addr" />
+    </resultMap>
+
+    <insert id="insertStudent">
+        INSERT INTO STUDENT (
+            STU_NO
+            , STU_NAME
+            , SCORE
+            , ADDR
+        ) VALUES (
+            11
+            , '이순신'
+            , 95
+            , '부산'
+        )
+    </insert>
+
+    <delete id="deleteStudent">
+        DELETE FROM STUDENT
+        WHERE STU_NO = 11
+    </delete>
+
+    <delete id="delete">
+        DELETE FROM STUDENT
+        WHERE STU_NO = #{stuNo}
+    </delete>
+
+<!--
+    왜 조회 함? 조회한 데이터 자바로 가져오기 위해
+    조회한 데이터 타입을 어떤 데이터 타입으로 가져오나?
+    STU_NAME이니 String임
+
+    왜 insert. delete, update 는 리턴타입 void ?
+    select는 다른가?
+    DB 조회 시, select는 당장 조회로 보이지만 나머지는 아니기 때문
+
+    select 사용 시 유의점
+    리턴 타입이 무엇인가?
+    불러오는 타입이 무엇인가? (resultType, resultMap)
+
+    resultType : 자바에서 기본으로 제공하는 자료형만 입력
+    resultMap : 개발자가 직접 만든 자료형 입력
+
+-->
+    <select id="selectName" resultType="String">
+        SELECT STU_NAME
+        FROM STUDENT
+        WHERE STU_NO = 1
+    </select>
+
+    <select id="selectScore" resultType="int">
+        SELECT SCORE
+        FROM STUDENT
+        WHERE STU_NO = 1
+    </select>
+
+
+    <!--
+        각 어떤 변수와 연결할 지 설정해주어야 함 (resultMap)
+        VO는 단순히 통을 만든 것이고 연결하는 길을 안내해주진 않음
+        so, class자료형 이나 개발자가 임의로 만든 자료형은 길을 안내해주는 것을 만들어야 함 (만든 위치 상단)
+    -->
+    <select id="selectStu" resultMap="stu">
+        SELECT STU_NO
+            , STU_NAME
+            , SCORE
+            , ADDR
+        FROM STUDENT
+        WHERE STU_NO =1
+    </select>
+
+    <select id="selectStuList" resultMap="stu">
+        SELECT STU_NO
+            , STU_NAME
+            , SCORE
+            , ADDR
+        FROM STUDENT
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

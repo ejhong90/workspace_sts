@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        width: 600px;
+        margin: 0 auto;
+    }
+    table{
+        width: 100%;
+    }
+    .btn-div{
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <form action="/member/login" method="post">
+            <table>
+                <tr>
+                    <td>ID</td>
+                    <td>
+                        <input type="text" name="memberId">
+                    </td>
+                </tr>
+                <tr>
+                    <td>PW</td>
+                    <td>
+                        <input type="password" name="memberPw">
+                    </td>
+                </tr>     
+            </table>
+            <div class="btn-div">
+                <input type="button" value="게시글 보러가기" onclick="goBoardList()">
+                <input type="submit" value="로그인">
+                <input type="button" value="회원가입" onclick= "goJoin()">
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        // 회원가입 창으로 향하는 함수 선언
+        // 함수 실행 시, 함수명();
+        function goJoin(){
+            location.href = '/member/joinForm';
+        }
+
+        function goBoardList(){
+            location.href = '/board/goBoardList';
+        }
+    </script>
+</body>
+</html>

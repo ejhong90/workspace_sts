@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/user_layout}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <!-- <link rel="stylesheet" href="/"> -->
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+     <div class="row">
+        <div class="col">
+            <table class="table table-bordered  align-middle text-center table-hover">
+                <thead>
+                    <tr class="table-success">
+                        <td rowspan="2">
+                            <span style="display: inline-block; padding-bottom: 18px;">No</span>
+                        </td>
+                        <td colspan="4">
+                            구매자정보 
+                        </td>
+                        <td colspan="2">
+                            차량 정보
+                        </td>
+                    </tr>
+                    <tr class="table-success">
+                        <td>구매자명</td>
+                        <td>연락처</td>
+                        <td>구매일</td>
+                        <td>색상</td>
+                        <td>모델명</td>
+                        <td>금액</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th:block th:each="salesInfo, state : ${list}">
+                        <tr>
+                            <td>[[${#lists.size(list) - state.index}]]</td>
+                            <td>[[${salesInfo.salesName}]]</td>
+                            <td>[[${salesInfo.salesPhone}]]</td>
+                            <td>[[${salesInfo.salesDate}]]</td>
+                            <td>[[${salesInfo.salesColor}]]</td>
+                            <td>[[${salesInfo.carInfoVO.modelName}]]</td>
+                            <td>[[${#numbers.formatInteger(salesInfo.carInfoVO.modelPrice, 0, 'COMMA')}]]</td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
+        </div>
+     </div>
+</th:block>
+
+<th:block layout:fragment="content_js">
+     <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <!-- <script src="/"></script> -->
+</th:block>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="num1">
+    <input type="password" class="num2">
+    <input type="checkbox" value="1" class="num3">
+    <input type="checkbox" value="2" class="num3">
+    <input type="checkbox" value="3" class="num3">
+    <input type="button" value="버튼" onclick="showDate()">
+
+    <script>
+        // dom 객체(태그) 컨트롤
+        // html 컨트롤이 제일 중요하다.
+
+        // 원하는 태그에 접근하기 (선택하기)
+        // 신버전
+        // 1. id 속성이 num1인 태그를 선택
+        const tag1 = document.querySelector('#num1');
+        console.log(tag1);
+
+        // 2. class 속성이 num2인 태그 선택
+        const tag2 = document.querySelector('.num2');
+        console.log(tag2);
+
+        // 3. class 속성이 num3인 태그 선택
+        // class 중복 입력 시, 무조건 가장 처음 선언된 태그만 선택함
+        const tag3 = document.querySelector('.num3');
+        console.log(tag3);
+
+        // 4. class 속성이 num3인 태그 모두 선택
+        const tag4 = document.querySelectorAll('.num3');
+        console.log(tag4);
+
+        // 0번째 저장된 태그 출력
+        console.log(tag4[0]);
+
+        // tag4의 전체 data 출력
+        for(let i = 0 ; i < tag4.length ; i++){
+            console.log(tag4[i]);
+        }
+
+        for(const e of tag4){
+            console.log(e);
+        }
+
+        // 구버전
+        // 글자를 누르고 특정 버튼 클릭 시, 
+        // input태그에 작성한 내용을 allert 창에 띄운다.
+        
+        function showDate(){
+            alert();
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        table 자식 태그 개수 : 3개
+        table 자손 태그 수 : 12개
+        tr의 자식 태그 : 2개
+        tr의 자손 태그 : 3개
+        td 의 형제 태그 : 2개 (tr의 슬하에 있는 형제)
+        td의 다음 형제 : 그 다음 tr의 자식
+        이전 형제 : 앞 tr의 자식
+     -->
+    <table id="my-table">
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <input type="text" value="1">
+                </td>
+            </tr>
+            <tr id="my-tr">
+                <td>2</td>
+                <td>
+                    <input type="text" value="2">
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <input type="text" value="3">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // id 속성이 my-table인 태그의 자식 태그 선택
+        const tableTag = document.querySelector('#my-table');
+
+        // 자식 태그 접근
+        console.log(tableTag.children);
+
+        // 테이블 태그의 자식의 자식 태그 선택
+        // 자식 태그 출력할 때 배열로 출력된다는 거 인지해야함
+        console.log(tableTag.children[0].children)
+
+        // 부모 태그에 접근
+        const trTag = document.querySelector('#my-tr');
+        console.log(trTag.parentElement);
+        console.log(trTag.parentElement.parentElement);
+
+
+    </script>
+
+
+    
+</body>
+</html>

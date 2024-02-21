@@ -1,0 +1,65 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+/* > : 자식 태그 */
+.container > tbody > tr, .container > tbody > tr > td{
+    border: 1px solid black;
+    height: 500px;
+    vertical-align: top;
+}
+span{
+    width: 50px;
+}
+/* ' ' : 자손 태그 */
+/* .container tr{
+
+} */
+.table{
+    display: table;
+    margin: 0 auto;
+    width: 90%;
+}
+.rowTitle, .rowBody{
+    display: table-row;
+
+}
+.cell{
+    display: table-cell;
+    border: solid;
+    border-width: thin;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.table > .row:hover{
+    background-color: #dddddd;
+} 
+.stu-detail-div table{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+.stu-detail-div table tr, .stu-detail-div table td{
+    border: 1px solid black;
+
+}
+
+.stu-detail-div > div:first-child {
+    margin-bottom: 30px;
+}
+
+#name-span:hover{
+    cursor: pointer;
+}
+
+.scoreInput{
+    width: 30px;
+    text-align: center;
+}

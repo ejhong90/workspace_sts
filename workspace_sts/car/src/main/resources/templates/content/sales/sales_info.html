@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/user_layout}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <!-- <link rel="stylesheet" href="/"> -->
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+    <div class="row">
+        <div class="col">
+            <table class="offset-1 table align-middle" style="width: 90%;">
+                <form action="/sales/saleList" method="post">
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-2">구매자명</div>
+                                <div class="col-9 d-grid">
+                                    <input type="text" name="salesName" required>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-2">색상</div>
+                                <div class="col-3">
+                                    <select class="form-select" name="salesColor" required>
+                                        <option value="블랙" selected>블랙</option>
+                                        <option value="화이트">화이트</option>
+                                        <option value="실버">실버</option>
+                                        <option value="레드">레드</option>
+                                    </select>
+                                </div>
+                                <div class="offset-1 col-2">모델</div>
+                                <div class="col-3">
+                                    <select class="form-select" name="modelNum"  required>
+                                        <option  th:each="category : ${categories}" th:value="${category.modelNum}">[[${category.modelName}]]</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-2">연락처</div>
+                                <div class="col-8 d-grid">
+                                    <input type="text" name="salesPhone">
+                                </div>
+                                <div class="col-2"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="submit" class="btn btn-success" value="등록">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="content_js">
+     <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <!-- <script src="/"></script> -->
+</th:block>
+</html>

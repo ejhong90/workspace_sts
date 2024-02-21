@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        width: 600px;
+        margin: 0 auto;
+    }
+    table{
+        width: 100%;
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    tr, td{
+        border: 1px solid black;
+    }
+    .btn-div{
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td>글번호</td>
+                <td>[[${boardDetail.boardNum}]] </td>
+                <td>작성자</td>
+                <td>[[${boardDetail.writer}]] </td>
+                <td>작성일</td>
+                <td>[[${boardDetail.createDate}]] </td>
+            </tr>
+            <tr>
+                <td>제목</td>
+                <td colspan="5">[[${boardDetail.boardTitle}]]</td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td colspan="5">[[${boardDetail.boardContent}]]</td>
+            </tr>
+        </table>
+        <div class="btn-div">
+            <input type="button" value="뒤로가기" th:onclick="goBack()">
+            <input type="button" value="수정" th:onclick="|location.href='@{updateForm(boardNum=${boardDetail.boardNum})}'|">
+            <input type="button" value="삭제" th:onclick="|location.href='@{deleteForm(boardNum=${boardDetail.boardNum})}'|">
+        </div>
+
+    </div>
+
+    <script>
+        function goBack(){
+            location.href = '/';
+
+        }
+    </script>
+</body>
+</html>

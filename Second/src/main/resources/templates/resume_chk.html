@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+    <div>
+        <h1>이력서 확인</h1>
+    </div>
+    <div>
+        <div>
+            <table>
+                <tr>
+                    <td>이름</td>
+                    <td>[[${resumeVO.name}]]</td>
+                    <td>연락처</td>
+                    <td>[[${resumeVO.tel}]]</td>
+                </tr>
+                <tr>
+                    <td>학력</td>
+                    <td>[[${resumeVO.grade}]] [[${resumeVO.school}]] </td>
+                    <td>지원구분</td>
+                    <td>[[${resumeVO.careerPart}]] </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>자격증 정보</td>
+                    <td>[[${resumeVO.credentials}]] </td>
+                    <td>[[${resumeVO.date}]] </td>
+                    <td>[[${resumeVO.issuer}]] </td>
+                </tr>
+                <tr>
+                    <td>경력 정보</td>
+                    <td>[[${resumeVO.company}]] [[${resumeVO.job}]] [[${resumeVO.careerYear}]]년 [[${resumeVO.careerDate}]]개월 </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td>자기소개</td>
+                </tr>
+                <tr>
+                    <td>[[${resumeVO.intro}]] </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

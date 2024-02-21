@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/personal_layout}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <!-- <link rel="stylesheet" href="/"> -->
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item" th:each="item, state : ${buyList}">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:data-bs-target="${'#collapse_' + state.count}" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            <div class="row" style="width: 100%;"> 
+                                <div class="col-1" style="width: 10%;">[[${#numbers.formatInteger(#lists.size(buyList) - state.index, 2)}]] | </div>
+                                <div class="col" style="width: 30%;">[[${item.buyDetailList[0].itemVO.itemName}]] 
+                                    <span th:if="${#lists.size(item.buyDetailList) &gt;= 2}">외 [[${#lists.size(item.buyDetailList)-1}]] 개</span> 구매
+                                </div>
+                                <div class="col" style="width: 30%;">[[${item.buyDate}]]</div>
+                                <div class="col" style="width: 30%;">[[${#numbers.formatInteger(item.buyPrice, 0, 'COMMA')}]]원 결제</div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div th:id="${'collapse_' + state.count}" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <table class="table table-hover align-middle">
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="*">
+                                    <col width="25%">
+                                    <col width="30%">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <td>No</td>
+                                        <td>구매 상품</td>
+                                        <td>수량</td>
+                                        <td>결제 금액</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="detail, detailState : ${item.buyDetailList}">
+                                        <td>[[${#lists.size(item.buyDetailList) - detailState.index}]]</td>
+                                        <td><img width="15%" th:src="@{'/upload/' + ${detail.itemVO.imgList[0].attachedFileName}}"> [[${detail.itemVO.itemName}]]</td>
+                                        <td>[[${detail.buyCnt}]]</td>
+                                        <td>[[${#numbers.formatInteger(detail.totalPrice, 0, 'COMMA')}]]원</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+
+
+
+<th:block layout:fragment="content_js">
+     <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <!-- <script src="/"></script> -->
+</th:block>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<th:block layout:fragment="content_css">
+    <link rel="stylesheet" href="/css/menu.css">
+</th:block>
+
+<th:block th:fragment="menuFragment">
+    
+    <h3 class="test">menu.html 파일입니다. [[${name}]] </h3>
+    <br>
+    [[${age}]]
+</th:block>
+
+
+<th:block layout:fragment="content_js">
+    <script src="/detail.js"></script>
+</th:block>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="salesMapper">
+    <resultMap id="salesInfo" type="com.green.car.sales.vo.SalesInfoVO">
+        <id column="SALES_NUM"          property="salesNum"/>
+        <result column="SALES_NAME"     property="salesName"/>
+        <result column="SALES_PHONE"    property="salesPhone"/>
+        <result column="SALES_COLOR"    property="salesColor"/>
+        <result column="SALES_DATE"     property="salesDate"/>
+        <result column="MODEL_NUM"      property="modelNum"/>
+        <association property="carInfoVO" resultMap="carMapper.carList"/>
+    </resultMap>
+
+    <!-- 판매 정보 등록 -->
+    <insert id="insertSalesInfo">
+        INSERT INTO SALES_INFO (
+            SALES_NAME
+            , SALES_COLOR
+            , SALES_PHONE
+            , MODEL_NUM
+        ) VALUES (
+            #{salesName}
+            , #{salesColor}
+            , #{salesPhone}
+            , #{modelNum}
+        )
+    </insert>
+
+    <!-- 등록된 차량의 모델 정보 조회 -->
+    <select id="modelNameToCate" resultMap="carMapper.carList">
+        SELECT MODEL_NAME
+            , MODEL_NUM
+        FROM CAR_INFO
+    </select>
+
+    <!-- 판매 목록 전체 조회 -->
+    <select id="selectSellList" resultMap="salesInfo">
+        SELECT SALES.MODEL_NUM
+            , MODEL_NAME
+            , MODEL_PRICE
+            , SALES_NUM
+            , SALES_NAME
+            , SALES_PHONE
+            , LEFT(SALES_DATE, 16) SALES_DATE
+            , SALES_COLOR
+        FROM SALES_INFO SALES INNER JOIN CAR_INFO CAR
+        ON SALES.MODEL_NUM = CAR.MODEL_NUM
+        WHERE SALES.MODEL_NUM = CAR.MODEL_NUM
+        ORDER BY SALES_DATE DESC
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+    .container{
+        width: 600px;
+        margin: 0 auto;
+    }
+    table{
+        width: 100%;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    tr, td{
+        border: 1px solid black;
+    }
+    .btn-div{
+        text-align: center;
+        margin-top: 16px;
+    }
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td>학번</td>
+                <td>학생명</td>
+                <td>국어점수</td>
+                <td>영어점수</td>
+                <td>총점</td>
+            </tr>
+            <th:block th:each="student : ${stuList}">
+                <tr>
+                    <td>[[${student.stuNo}]]</td>
+                    <td> 
+                        <a th:href="@{/stuDetail(stuNo=${student.stuNo})}">[[${student.stuName}]]</a>
+                    </td>
+                    <td>[[${student.korScore}]]</td>
+                    <td>[[${student.engScore}]]</td>
+                    <td>[[${student.korScore + student.engScore}]]</td>
+                </tr>
+            </th:block>
+        </table>
+        <div class="btn-div">
+            <input type="button" value="학생등록" onclick="goReg()">
+            <!-- 
+                버튼을 만드는 방식
+                1) input 태그 type : button
+                2) button 태그 사용 <button type="button">학생등록</button>
+             -->
+        </div>
+        
+    </div>
+    
+
+    <script>
+        function goReg(){
+            location.href = 'regStu';
+            // <a href ="regStu"></a> 과 동일함
+        }
+    </script>
+
+</body>
+</html>

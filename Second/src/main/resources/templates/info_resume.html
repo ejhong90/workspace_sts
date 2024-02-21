@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+    <form action="r3" method="post">
+        <div>
+            <input type="hidden" name="name" th:value="${name}">
+            <input type="hidden" name="tel" th:value="${tel}">
+
+            <div><h1>이력서 정보</h1></div>
+            <div>
+                <div>학력</div>
+                <div> <select name="grade" >
+                    <option value="대졸">대졸</option>
+                    <option value="대학졸업예정">대학졸업예정</option>
+                    <option value="전문대졸">전문대졸</option>
+                    <option value="고졸">고졸</option>
+                </select>
+                <input type="text" name="school" placeholder="학교명"></div>
+            </div>
+            <div>
+                <div>지원구분</div>
+                <div>
+                    <input type="radio" name="careerPart" value="신입" checked>신입
+                    <input type="radio" name="careerPart" value="경력">경력
+                </div>
+            </div>
+            <div>
+                <div>자격정보</div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>자격증명</td>
+                            <td>취득일자</td>
+                            <td>발행기관</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="credentials"></td>
+                            <td><input type="date" name="date"></td>
+                            <td><input type="text" name="issuer"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div>경력정보</div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>회사명</td>
+                            <td>담당업무</td>
+                            <td>경력기간</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" name="company">
+                            </td>
+                            <td>
+                                <input type="text" name="job">
+                            </td>
+                            <td>
+                                <input type="text" name="careerYear"> 년
+                                <input type="text" name="careerDate"> 개월
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div>자기소개</div>
+                <div>
+                    <textarea name="intro" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="등록">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<ht:block th:fragment="headerFragment">
+
+    <div class="row mt-5">
+        <div class="col">
+            <table class="table table-borderless table-success">
+                <colgroup>
+                    <col width="25%">
+                    <col width="25%">
+                    <col width="25%">
+                    <col width="*">
+                </colgroup>
+                <tbody style="font-weight: bold;">
+                    <tr>
+                        <td><span class="pointer-span" onclick="location.href='/'">홈</span></td>
+                        <td><span class="pointer-span" onclick="location.href='/manage/insertInform'">차랑 관리</span></td>
+                        <td><span class="pointer-span" onclick="location.href='/sales/addSaleInfo'">판매 정보 등록</span></td>
+                        <td><span class="pointer-span" onclick="location.href='/sales/carList'"> 판매 목록 </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</ht:block>

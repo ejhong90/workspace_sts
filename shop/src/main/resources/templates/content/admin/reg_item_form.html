@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/admin_layout}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴 때 같이 실행되는 css -->
+    <link rel="stylesheet" href="/css/content/reg_item_form.css">
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+    <!-- html 코드 작성 -->
+    <form action="/admin/regItem" method="post" enctype="multipart/form-data">
+    <div class="row" >
+        <div class="col-12">
+            <div class="row mb-3">
+                <div class="col-8">
+                    <div class="form-floating">
+                        <select class="form-select" name="cateCode" id="floatingSelect" aria-label="Floating label select example">
+                            <option th:each="category : ${categoryList}" th:value="${category.cateCode}">[[${category.cateName}]]</option>
+                        </select>
+                        <label for="floatingSelect"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2"  >
+                <div class="col-8">
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" id="inputGroup-sizing-default">상품명</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input" name="itemName" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-8">
+                    <div class="input-group mb-2">
+                        <span class="input-group-text" id="inputGroup-sizing-default">가&nbsp;&nbsp; 격</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input" name="itemPrice" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-8">
+                    <div class="input-group height-textarea">
+                        <span class="input-group-text ">상&nbsp;&nbsp; 품<br>소&nbsp;&nbsp; 개</span>
+                        <textarea class="form-control" name="itemIntro" aria-label="With textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-10">
+                    <div class="mb-3">
+                        <label for="" class="form-label">메인 이미지 등록</label>
+                        <input class="form-control" type="file" name="main">
+                      </div>
+                </div>
+                <div class="col-10">
+                    <div class="mb-3">
+                        <label for="" class="form-label">상세 이미지 등록</label>
+                        <input class="form-control" type="file" name="details" multiple>
+                      </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-10">
+                    <div class="col-2">
+                        <label for="" class="form-label">&nbsp;</label>
+                        <input type="submit" class="btn btn-primary" value="등록"></input> 
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>  
+</form>  
+</th:block>
+
+<th:block layout:fragment="content_js">
+    <!-- html 파일이 열릴 때 같이 실행되는 js -->
+    <!-- <script src="/"></script> -->
+</th:block>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{fragment/user_layout}" >
+
+<th:block layout:fragment="content_css">
+    <!-- html 파일이 열릴때 같이 실행되는 css -->
+    <!-- <link rel="stylesheet" href="/css/content/management/manage.css"> -->
+</th:block>
+
+<th:block layout:fragment="contentFragment">
+    <div class="row">
+        <div class="col">
+            <table class="table table-borderless align-middle">
+                <form action="/manage/addModel" method="post">
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col text-start">
+                                    차량 등록
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="col-1">
+                                    제조사
+                                </div>
+                                <div class="col">
+                                    <select class="form-select" name="modelCompany">
+                                        <option value="현대">현대</option>
+                                        <option value="기아">기아</option>
+                                        <option value="쌍용">쌍용</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    모델명
+                                </div>
+                                <div class="col">
+                                    <input type="text" name="modelName">
+                                </div>
+                                <div class="col">
+                                    차량 가격
+                                </div>
+                                <div class="col">
+                                    <input type="number" name="modelPrice" placeholder="10000">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="row">
+                                <div class="offset-11 col d-grid">
+                                    <input type="submit" class="btn btn-success" value="등록">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </form>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col text-start">
+                                차량 목록
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table table-hover">
+                                    <colgroup>
+                                        <col width="20%">
+                                        <col width="50%">
+                                        <col width="30%">
+                                    </colgroup>
+                                    <thead class="table-success" style="font-weight: bold;">
+                                        <tr>
+                                            <td>모델 번호</td>
+                                            <td>모델명</td>
+                                            <td>제조사</td>
+                                        </tr>
+                                        
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="car : ${carList}">
+                                            <td>[[${car.modelNum}]]</td>
+                                            <td>[[${car.modelName}]]</td>
+                                            <td>[[${car.modelCompany}]]</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div> 
+</th:block>
+
+<th:block layout:fragment="content_js">
+     <!-- html 파일이 열릴때 같이 실행되는 js -->
+    <!-- <script src="/"></script> -->
+</th:block>
+</html>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<mapper namespace="boardMapper">
+
+    <!--  목록 조회  -->
+    <resultMap id="selectResult" type="com.green.Board2.vo.BoardVO">
+        <result column="BOARD_NUM"      property="boardNum"/>
+        <result column="TITLE"          property="title"/>
+        <result column="CONTENT"        property="content"/>
+        <result column="WRITER"         property="writer"/>
+        <result column="CREATE_DATE"    property="createDate"/>
+        <result column="READ_CNT"       property="readCnt"/>
+    </resultMap>
+
+    <!--    게시글 목록 조회    -->
+    <select id="selectBoardList" resultMap="selectResult">
+        SELECT BOARD_NUM
+            , TITLE
+            , WRITER
+            , CREATE_DATE
+            , READ_CNT
+        FROM BOARD
+        <if test='searchValue != null and !searchValue.equals("")'>
+            WHERE ${searchType} LIKE CONCAT('%', #{searchValue}, '%')
+        </if>
+        ORDER BY BOARD_NUM DESC
+        LIMIT ${displayDataCnt} OFFSET ${displayDataCnt * (nowPage - 1)}
+    </select>
+<!--  searchValue, searchType은 어떻게 와요?
+   searchVO.getSearchValue()
+   searchVO.getSearchType() 으로 VO에서 사용한 getter 호출한 것
+
+   #{} : ''가 붙음
+   ${} : ''가 안붙음
+   의 차이점? '' 가 붙는 지 안 붙는 지의 차이 발생  -->
+
+    <!--  게시글 작성  -->
+    <insert id="insertBoard">
+        INSERT INTO BOARD (
+            TITLE
+            , CONTENT
+            , WRITER
+            , READ_CNT
+        ) VALUES (
+            #{title}
+            , #{content}
+            , #{writer}
+            , #{readCnt}
+        );
+    </insert>
+
+    <!--  제목 클릭 내용 보기  -->
+    <select id="selectDetail" resultMap="selectResult">
+        SELECT BOARD_NUM
+            , TITLE
+            , CONTENT
+            , WRITER
+            , CREATE_DATE
+        FROM BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </select>
+
+    <!--  선택한 게시물 수정  -->
+    <update id="updateBoard">
+        UPDATE BOARD
+        SET
+             TITLE = #{title}
+            , CONTENT = #{content}
+        WHERE BOARD_NUM = #{boardNum}
+    </update>
+
+    <!--  선택한 게시물 삭제  -->
+    <delete id="deleteBoard">
+        DELETE FROM BOARD
+        WHERE BOARD_NUM = #{boardNum}
+    </delete>
+
+    <!--  조회수 카운팅  -->
+    <update id="updateReadCnt">
+        UPDATE BOARD
+        SET
+            READ_CNT = READ_CNT + 1
+        WHERE BOARD_NUM = #{boardNum}
+    </update>
+
+<!--  전체 데이터 수  -->
+    <select id="selectBoardCnt" resultType="int">
+        SELECT COUNT(BOARD_NUM)
+        FROM BOARD
+        <if test='searchValue != null and !searchValue.equals("")'>
+            WHERE ${searchType} LIKE CONCAT('%', #{searchValue}, '%')
+        </if>
+    </select>
+    <!--  게시판 제목 검색  -->
+<!--    <select id="searchBoard" resultMap="selectResult">-->
+<!--        SELECT BOARD_NUM-->
+<!--            , TITLE-->
+<!--            , WRITER-->
+<!--            , CREATE_DATE-->
+<!--            , READ_CNT-->
+<!--        FROM BOARD-->
+<!--        WHERE #{searchType} LIKE CONCAT('%', #{searchValue}, '%')-->
+<!--    </select>-->
+
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
